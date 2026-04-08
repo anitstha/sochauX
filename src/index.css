@@ -64,12 +64,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: var(--color-accent);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
+  opacity: 0.8;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) var(--color-bg);
 }
 
 .gradient-text {
@@ -101,14 +107,8 @@ body {
 
 .glow-card {
   background-color: var(--color-card-bg);
-  border-color: var(--color-border);
+  border: 1px solid var(--color-border);
   transition: all 0.3s ease;
-}
-
-.glow-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(212, 168, 83, 0.15);
-  border-color: var(--color-accent);
 }
 
 .fade-in {

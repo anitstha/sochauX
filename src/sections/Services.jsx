@@ -24,17 +24,27 @@ export default function Services() {
             return (
               <div
                 key={service.title}
-                className={`glow-card rounded-2xl p-8 fade-in stagger-${index + 1}`}
+                className="group relative bg-card rounded-2xl p-8 overflow-hidden fade-in stagger-1"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  {IconComponent && <IconComponent size={28} className="text-accent" />}
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-[1px] rounded-2xl border border-transparent group-hover:border-accent/20 transition-all duration-500" />
+                
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/10 group-hover:border-accent/30 flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-accent/10">
+                    {IconComponent && <IconComponent size={28} className="text-accent group-hover:scale-110 transition-transform duration-300" />}
+                  </div>
+                  
+                  <h3 className="font-heading text-xl font-bold mb-3 group-hover:text-accent transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-accent/50 to-transparent mb-4 group-hover:w-12 transition-all duration-300" />
+                  
+                  <p className="text-secondary text-sm leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="font-heading text-xl font-bold mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-secondary text-sm leading-relaxed">
-                  {service.description}
-                </p>
               </div>
             );
           })}
