@@ -10,7 +10,7 @@ export default function Team() {
           <h2 className="font-heading text-4xl md:text-5xl font-bold mt-4">
             Meet Our <span className="gradient-text">Founders</span>
           </h2>
-          <p className="text-text-secondary mt-4 max-w-2xl mx-auto">
+          <p className="text-secondary mt-4 max-w-2xl mx-auto">
             Three visionaries united by a passion for technology and a
             commitment to excellence.
           </p>
@@ -20,7 +20,7 @@ export default function Team() {
           {team.map((member, index) => (
             <div
               key={member.name}
-              className={`group relative bg-bg-card border border-border-subtle rounded-2xl p-8 text-center overflow-hidden fade-in stagger-${index + 1}`}
+              className={`group relative bg-card border border-theme rounded-2xl p-8 text-center overflow-hidden fade-in stagger-${index + 1}`}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -40,36 +40,36 @@ export default function Team() {
                 <p className="text-accent text-sm font-medium mb-4">
                   {member.role}
                 </p>
-                <p className="text-text-secondary text-sm leading-relaxed">
+                <p className="text-secondary text-sm leading-relaxed">
                   {member.bio}
                 </p>
 
                 <div className="flex justify-center gap-3 mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
-                    className="p-2 rounded-lg bg-bg-dark/50 hover:bg-accent/20 transition-colors"
+                    className="p-2 rounded-lg bg-bg/50 hover:bg-accent/20 transition-colors"
                     aria-label="GitHub"
                   >
                     <GithubIcon
                       size={18}
-                      className="text-text-secondary hover:text-accent"
+                      className="text-secondary hover:text-accent"
                     />
                   </button>
                   <button
-                    className="p-2 rounded-lg bg-bg-dark/50 hover:bg-accent/20 transition-colors"
+                    className="p-2 rounded-lg bg-bg/50 hover:bg-accent/20 transition-colors"
                     aria-label="LinkedIn"
                   >
                     <LinkedinIcon
                       size={18}
-                      className="text-text-secondary hover:text-accent"
+                      className="text-secondary hover:text-accent"
                     />
                   </button>
                   <button
-                    className="p-2 rounded-lg bg-bg-dark/50 hover:bg-accent/20 transition-colors"
+                    className="p-2 rounded-lg bg-bg/50 hover:bg-accent/20 transition-colors"
                     aria-label="Twitter"
                   >
                     <TwitterIcon
                       size={18}
-                      className="text-text-secondary hover:text-accent"
+                      className="text-secondary hover:text-accent"
                     />
                   </button>
                 </div>

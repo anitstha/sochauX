@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "../components/ThemeToggle";
 
 const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#services", label: "Services" },
+  { href: "#projects", label: "Projects" },
   { href: "#about", label: "About" },
+  { href: "#testimonials", label: "Testimonials" },
   { href: "#team", label: "Team" },
   { href: "#contact", label: "Contact" },
 ];
@@ -35,65 +38,154 @@ export default function Navbar({ scrolled }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "nav-blur bg-bg-dark/80" : "bg-transparent"}`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <a
-            href="#home"
-            className="font-heading text-2xl font-bold tracking-tight"
-          >
-            Sochau<span className="text-accent">X</span>
-          </a>
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+  const handleLinkClick = () => {
+    setMobileOpen(false);
+  };
+
+  return (
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "nav-blur" : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <a
+              href="#home"
+              className="font-heading text-2xl font-bold tracking-tight"
+              onClick={handleLinkClick}
+            >
+              Sochau<span className="text-accent">X</span>
+            </a>
+
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors hover:text-accent ${
+                    activeSection === link.href.replace("#", "")
+                      ? "text-accent"
+                      : "text-secondary"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <ThemeToggle />
+            </div>
+
+            <div className="flex items-center gap-3 md:hidden">
+              <ThemeToggle />
+              <button
+                className="relative w-10 h-10 flex items-center justify-center"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label="Toggle menu"
+              >
+                <div className="relative w-6 h-5">
+                  <span
+                    className={`absolute left-0 w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${
+                      mobileOpen
+                        ? "top-1/2 rotate-45 translate-y-[-50%]"
+                        : "top-1"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${
+                      mobileOpen ? "opacity-0 translate-x-[-10px]" : "translate-y-[-50%]"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 w-6 h-0.5 bg-current rounded-full transition-all duration-300 ${
+                      mobileOpen
+                        ? "top-1/2 -rotate-45 translate-y-[-50%]"
+                        : "top-4"
+                    }`}
+                  />
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        className={`fixed inset-0 z-40 bg-primary/95 backdrop-blur-lg transition-all duration-300 md:hidden ${
+          mobileOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="flex flex-col items-center gap-2">
+            {navLinks.map((link, index) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
+                onClick={handleLinkClick}
+                className={`text-3xl font-heading font-bold py-4 px-8 transition-all duration-300 ${
+                  mobileOpen
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                } ${
                   activeSection === link.href.replace("#", "")
                     ? "text-accent"
-                    : "text-text-secondary"
+                    : "text-secondary hover:text-primary"
                 }`}
+                style={{
+                  transitionDelay: mobileOpen ? `${index * 80}ms` : "0ms",
+                }}
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <button
-            className="md:hidden p-2 text-text-primary"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+          <div
+            className={`absolute bottom-20 flex items-center gap-6 transition-all duration-300 ${
+              mobileOpen ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transitionDelay: mobileOpen ? "400ms" : "0ms" }}
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {mobileOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border-subtle">
-            <div className="flex flex-col gap-4 pt-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`text-base font-medium transition-colors hover:text-accent ${
-                    activeSection === link.href.replace("#", "")
-                      ? "text-accent"
-                      : "text-text-secondary"
-                  }`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-accent transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-accent transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-accent transition-colors"
+            >
+              Twitter
+            </a>
           </div>
-        )}
+        </div>
       </div>
-    </nav>
+    </>
   );
 }

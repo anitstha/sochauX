@@ -25,7 +25,7 @@ export default function Hero() {
           <span className="gradient-text">One System at a Time</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10 fade-in stagger-2">
+        <p className="text-lg md:text-xl text-secondary max-w-2xl mx-auto mb-10 fade-in stagger-2">
           SochauX transforms ideas into powerful, user-friendly digital
           products. System design, web development, SaaS platforms, and school
           management — all under one roof.
@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in stagger-3">
           <a
             href="#contact"
-            className="group flex items-center gap-2 px-8 py-4 bg-accent text-bg-dark font-semibold rounded-lg hover:scale-[1.02] active:scale-[0.98] transition-transform"
+            className="group flex items-center gap-2 px-8 py-4 bg-accent text-primary font-semibold rounded-lg hover:scale-[1.02] active:scale-[0.98] transition-transform"
           >
             Get Started
             <ChevronRight
@@ -52,8 +52,8 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-text-secondary rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-text-secondary rounded-full" />
+        <div className="w-6 h-10 border-2 border-secondary rounded-full flex items-start justify-center p-2">
+          <div className="w-1.5 h-3 bg-secondary rounded-full" />
         </div>
       </div>
     </section>
