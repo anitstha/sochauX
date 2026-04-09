@@ -8,9 +8,8 @@ const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
+  { href: "https://sochau.cloud", label: "Superadmin Portal" },
 ];
 
 export default function Navbar({ scrolled }) {
@@ -54,11 +53,13 @@ export default function Navbar({ scrolled }) {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-accent ${
-                    location.pathname === link.href
-                      ? "text-accent"
-                      : "text-secondary"
-                  }`}
+                  className={link.label === "Superadmin Portal"
+                    ? "px-4 py-2 bg-accent text-white text-sm font-medium rounded-lg hover:bg-accent/90 transition-colors"
+                    : `text-sm font-medium transition-colors hover:text-accent ${
+                        location.pathname === link.href
+                          ? "text-accent"
+                          : "text-secondary"
+                      }`}
                 >
                   {link.label}
                 </Link>
@@ -114,17 +115,21 @@ export default function Navbar({ scrolled }) {
                 key={link.href}
                 to={link.href}
                 onClick={handleLinkClick}
-                className={`text-3xl font-heading font-bold py-4 px-8 transition-all duration-300 ${
-                  mobileOpen
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                } ${
-                  location.pathname === link.href
-                    ? "text-accent"
-                    : "text-secondary hover:text-primary"
+                className={`${
+                  link.label === "Superadmin Portal"
+                    ? "px-6 py-3 bg-accent text-white font-medium rounded-xl hover:bg-accent/90 transition-colors"
+                    : `text-3xl font-heading font-bold py-4 px-8 transition-all duration-300 ${
+                        mobileOpen
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4"
+                      } ${
+                        location.pathname === link.href
+                          ? "text-accent"
+                          : "text-secondary hover:text-primary"
+                      }`
                 }`}
                 style={{
-                  transitionDelay: mobileOpen ? `${index * 80}ms` : "0ms",
+                  transitionDelay: mobileOpen && link.label !== "Superadmin Portal" ? `${index * 80}ms` : "0ms",
                 }}
               >
                 {link.label}

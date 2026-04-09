@@ -29,8 +29,6 @@
 | Services | `/services` | Detailed service offerings |
 | Projects | `/projects` | Portfolio with filtering |
 | About | `/about` | Company story and team |
-| Blog | `/blog` | Articles and insights |
-| Careers | `/careers` | Job openings |
 | Contact | `/contact` | Contact form and info |
 
 ## 🛠️ Tech Stack
@@ -83,8 +81,7 @@ sochaux/
 │   │   ├── ServicesPage.jsx
 │   │   ├── ProjectsPage.jsx
 │   │   ├── AboutPage.jsx
-│   │   ├── BlogPage.jsx
-│   │   ├── CareersPage.jsx
+
 │   │   └── ContactPage.jsx
 │   ├── sections/         # Section components
 │   │   ├── Navbar.jsx

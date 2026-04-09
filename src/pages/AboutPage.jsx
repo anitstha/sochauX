@@ -160,12 +160,6 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             <a
-              href="/careers"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-medium rounded-xl hover:bg-accent/90 transition-colors"
-            >
-              Join Our Team <ArrowRight size={18} />
-            </a>
-            <a
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 border border-theme hover:border-accent text-secondary hover:text-accent font-medium rounded-xl transition-colors"
             >

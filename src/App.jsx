@@ -7,8 +7,6 @@ import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import AboutPage from "./pages/AboutPage";
-import BlogPage from "./pages/BlogPage";
-import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
 
 function App() {
@@ -36,8 +34,6 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/careers" element={<CareersPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />
