@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
 export default function Hero() {
@@ -32,8 +33,8 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in stagger-3">
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="group flex items-center gap-2 px-8 py-4 bg-accent text-primary font-semibold rounded-lg hover:scale-[1.02] active:scale-[0.98] transition-transform"
           >
             Get Started
@@ -41,13 +42,13 @@ export default function Hero() {
               size={18}
               className="group-hover:translate-x-1 transition-transform"
             />
-          </a>
-          <a
-            href="#services"
+          </Link>
+          <Link
+            to="/services"
             className="flex items-center gap-2 px-8 py-4 border border-accent/50 text-accent font-semibold rounded-lg hover:bg-accent/10 transition-colors"
           >
             View Services
-          </a>
+          </Link>
         </div>
       </div>
 

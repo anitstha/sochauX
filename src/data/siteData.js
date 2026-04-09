@@ -25,12 +25,15 @@ export const services = [
   },
 ];
 
+import anit from "../assets/anit.jpg";
+
 export const team = [
   {
     name: "Anit Shrestha",
     role: "Co-Founder",
     bio: "Drives the technical vision with deep expertise in system architecture and scalable solutions.",
     github: "https://github.com/anitstha",
+    image: anit,
   },
   {
     name: "Bhim Raj Bhandari",

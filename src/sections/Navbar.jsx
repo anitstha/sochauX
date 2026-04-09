@@ -1,42 +1,21 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "../components/ThemeToggle";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#projects", label: "Projects" },
-  { href: "#about", label: "About" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#team", label: "Team" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/careers", label: "Careers" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar({ scrolled }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = navLinks.map((link) =>
-        document.querySelector(link.href),
-      );
-      const scrollPos = window.scrollY + 100;
-
-      sections.forEach((section, index) => {
-        if (section) {
-          const top = section.offsetTop;
-          const bottom = top + section.offsetHeight;
-          if (scrollPos >= top && scrollPos < bottom) {
-            setActiveSection(navLinks[index].href.replace("#", ""));
-          }
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const location = useLocation();
 
   useEffect(() => {
     if (mobileOpen) {
@@ -62,27 +41,27 @@ export default function Navbar({ scrolled }) {
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <a
-              href="#home"
+            <Link
+              to="/"
               className="font-heading text-2xl font-bold tracking-tight"
               onClick={handleLinkClick}
             >
               Sochau<span className="text-accent">X</span>
-            </a>
+            </Link>
 
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   className={`text-sm font-medium transition-colors hover:text-accent ${
-                    activeSection === link.href.replace("#", "")
+                    location.pathname === link.href
                       ? "text-accent"
                       : "text-secondary"
                   }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <ThemeToggle />
             </div>
@@ -131,16 +110,16 @@ export default function Navbar({ scrolled }) {
         <div className="flex flex-col items-center justify-center h-full">
           <div className="flex flex-col items-center gap-2">
             {navLinks.map((link, index) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 onClick={handleLinkClick}
                 className={`text-3xl font-heading font-bold py-4 px-8 transition-all duration-300 ${
                   mobileOpen
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
                 } ${
-                  activeSection === link.href.replace("#", "")
+                  location.pathname === link.href
                     ? "text-accent"
                     : "text-secondary hover:text-primary"
                 }`}
@@ -149,7 +128,7 @@ export default function Navbar({ scrolled }) {
                 }}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 

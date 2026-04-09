@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./sections/Navbar";
-import Hero from "./sections/Hero";
-import Services from "./sections/Services";
-import Projects from "./sections/Projects";
-import About from "./sections/About";
-import Testimonials from "./sections/Testimonials";
-import Team from "./sections/Team";
-import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import Loader from "./components/Loader";
+import HomePage from "./pages/HomePage";
+import ServicesPage from "./pages/ServicesPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import AboutPage from "./pages/AboutPage";
+import BlogPage from "./pages/BlogPage";
+import CareersPage from "./pages/CareersPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,17 +28,21 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen">
-      <Navbar scrolled={scrolled} />
-      <Hero />
-      <Services />
-      <Projects />
-      <About />
-      <Testimonials />
-      <Team />
-      <Contact />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen">
+        <Navbar scrolled={scrolled} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
