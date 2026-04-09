@@ -45,15 +45,20 @@ export default function Team() {
                 </p>
 
                 <div className="flex justify-center gap-3 mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button
-                    className="p-2 rounded-lg bg-bg/50 hover:bg-accent/20 transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <GithubIcon
-                      size={18}
-                      className="text-secondary hover:text-accent"
-                    />
-                  </button>
+                  {member.github && (
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-bg/50 hover:bg-accent/20 transition-colors"
+                      aria-label="GitHub"
+                    >
+                      <GithubIcon
+                        size={18}
+                        className="text-secondary hover:text-accent"
+                      />
+                    </a>
+                  )}
                   <button
                     className="p-2 rounded-lg bg-bg/50 hover:bg-accent/20 transition-colors"
                     aria-label="LinkedIn"

@@ -30,6 +30,7 @@ export const team = [
     name: "Anit Shrestha",
     role: "Co-Founder",
     bio: "Drives the technical vision with deep expertise in system architecture and scalable solutions.",
+    github: "https://github.com/anitstha",
   },
   {
     name: "Bhim Raj Bhandari",
@@ -44,8 +45,8 @@ export const team = [
 ];
 
 export const stats = [
-  { icon: "Code2", value: "50+", label: "Projects Delivered" },
-  { icon: "Users", value: "30+", label: "Happy Clients" },
+  { icon: "Code2", value: "10+", label: "Projects Delivered" },
+  { icon: "Users", value: "5+", label: "Happy Clients" },
   { icon: "Award", value: "3", label: "Founders" },
   { icon: "Clock", value: "24/7", label: "Support" },
 ];

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { testimonials } from "../data/testimonialsData";
 
@@ -12,6 +12,13 @@ export default function Testimonials() {
   const next = () => {
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const testimonial = testimonials[current];
 
@@ -35,11 +42,11 @@ export default function Testimonials() {
 
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="flex-shrink-0">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center border border-accent/20">
-                  <span className="font-heading text-3xl font-bold text-accent">
-                    {testimonial.image}
-                  </span>
-                </div>
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-24 h-24 rounded-2xl object-cover border-2 border-accent/20"
+                />
               </div>
 
               <div className="flex-1 text-center md:text-left">

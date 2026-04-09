@@ -1,4 +1,8 @@
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "../components/icons/SocialIcons";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  TwitterIcon,
+} from "../components/icons/SocialIcons";
 
 export default function Footer() {
   return (
@@ -15,7 +19,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/saasSochau"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-card transition-colors"
